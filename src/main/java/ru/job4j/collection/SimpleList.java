@@ -11,3 +11,4 @@ public interface SimpleList<T> extends Iterable<T> {
 
     int size();
 }
+
