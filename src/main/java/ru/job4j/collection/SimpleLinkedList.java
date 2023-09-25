@@ -44,14 +44,14 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
 
             private Node<E> lastReturned;
             private Node<E> next = head;
-            private int nextIndex;
+
             private final int expectedModCount = modCount;
             @Override
             public boolean hasNext() {
                 if (expectedModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return nextIndex < size;
+                return next != null;
             }
 
             @Override
@@ -61,7 +61,6 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 }
                 lastReturned = next;
                 next = next.next;
-                nextIndex++;
                 return lastReturned.item;
             }
         };
