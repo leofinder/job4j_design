@@ -1,7 +1,5 @@
 package ru.job4j.map;
 
-import ru.job4j.iterator.ArrayIt;
-
 import java.util.*;
 
 public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
@@ -65,7 +63,6 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
             }
         }
         table = newTable;
-
     }
 
     @Override
