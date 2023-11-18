@@ -42,4 +42,11 @@ class ConfigTest {
         config.load();
         assertThat(config.value("hibernate.connection.url")).isEqualTo("jdbc=postgresql://127.0.0.1:5432/trackstudio");
     }
+
+    @Test
+    void whenDoesNotContainEqualSign() {
+        String path = "./data/without_equal_sign.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(config::load).isInstanceOf(IllegalArgumentException.class);
+    }
 }
