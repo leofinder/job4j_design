@@ -25,18 +25,10 @@ class AnalysisTest {
 
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
-            for (String line = in.readLine(); line != null; line = in.readLine()) {
-                rsl.append(line);
-                rsl.append(System.lineSeparator());
-            }
+            in.lines().forEach(rsl::append);
         }
-        StringBuilder expected = new StringBuilder();
-        expected.append("10:57:01;10:59:01;");
-        expected.append(System.lineSeparator());
-        expected.append("11:01:02;11:02:02;");
-        expected.append(System.lineSeparator());
-
-        assertThat(expected.toString()).isEqualTo(rsl.toString());
+        String expected = "10:57:01;10:59:01;11:01:02;11:02:02;";
+        assertThat(expected).isEqualTo(rsl.toString());
     }
 
     @Test
@@ -56,15 +48,9 @@ class AnalysisTest {
 
         StringBuilder rsl = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new FileReader(target))) {
-            for (String line = in.readLine(); line != null; line = in.readLine()) {
-                rsl.append(line);
-                rsl.append(System.lineSeparator());
-            }
+            in.lines().forEach(rsl::append);
         }
-        StringBuilder expected = new StringBuilder();
-        expected.append("10:57:01;11:02:02;");
-        expected.append(System.lineSeparator());
-
-        assertThat(expected.toString()).isEqualTo(rsl.toString());
+        String expected = "10:57:01;11:02:02;";
+        assertThat(expected).isEqualTo(rsl.toString());
     }
 }
