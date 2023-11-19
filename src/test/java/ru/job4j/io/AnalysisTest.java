@@ -30,12 +30,13 @@ class AnalysisTest {
                 rsl.append(System.lineSeparator());
             }
         }
-        String expected = "10:57:01;10:59:01;" +
-                System.lineSeparator() +
-                "11:01:02;11:02:02;" +
-                System.lineSeparator();
+        StringBuilder expected = new StringBuilder();
+        expected.append("10:57:01;10:59:01;");
+        expected.append(System.lineSeparator());
+        expected.append("11:01:02;11:02:02;");
+        expected.append(System.lineSeparator());
 
-        assertThat(expected).isEqualTo(rsl.toString());
+        assertThat(expected.toString()).isEqualTo(rsl.toString());
     }
 
     @Test
@@ -60,9 +61,10 @@ class AnalysisTest {
                 rsl.append(System.lineSeparator());
             }
         }
-        String expected = "10:57:01;11:02:02;" +
-                System.lineSeparator();
+        StringBuilder expected = new StringBuilder();
+        expected.append("10:57:01;11:02:02;");
+        expected.append(System.lineSeparator());
 
-        assertThat(expected).isEqualTo(rsl.toString());
+        assertThat(expected.toString()).isEqualTo(rsl.toString());
     }
 }
