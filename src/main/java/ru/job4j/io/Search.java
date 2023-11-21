@@ -32,5 +32,12 @@ public class Search {
         if (!file.isDirectory()) {
             throw new IllegalArgumentException(String.format("Not directory %s", file.getAbsoluteFile()));
         }
+        String ext = args[1];
+        if (!ext.startsWith(".")) {
+            throw new IllegalArgumentException("Not dot in the file extension");
+        }
+        if (ext.length() < 2) {
+            throw new IllegalArgumentException("Length extension is less than 2");
+        }
     }
 }
