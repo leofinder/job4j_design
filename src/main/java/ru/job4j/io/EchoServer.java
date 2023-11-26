@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EchoServer {
     public static void main(String[] args) throws IOException {
@@ -16,8 +18,16 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
-                        if (str.matches("GET .+msg=Bye .+")) {
-                            server.close();
+                        String msg = getMessage(str);
+                        if (msg != null) {
+                            if ("Hello".equals(msg)) {
+                                out.write("Hello, dear friends".getBytes());
+                            } else if ("Exit".equals(msg)) {
+                                out.write("Bye".getBytes());
+                                server.close();
+                            } else {
+                                out.write(msg.getBytes());
+                            }
                         }
                         System.out.println(str);
                     }
@@ -25,5 +35,17 @@ public class EchoServer {
                 }
             }
         }
+    }
+
+    private static String getMessage(String str) {
+        String msg = null;
+        if (str.startsWith("GET")) {
+            Pattern pattern = Pattern.compile("^GET .+msg=(.+) .+$");
+            Matcher matcher = pattern.matcher(str);
+            if (matcher.matches()) {
+                msg = matcher.group(1);
+            }
+        }
+        return msg;
     }
 }
