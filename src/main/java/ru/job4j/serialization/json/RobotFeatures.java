@@ -9,6 +9,14 @@ public class RobotFeatures {
         this.strengthLevel = strengthLevel;
     }
 
+    public String getMaterial() {
+        return material;
+    }
+
+    public int getStrengthLevel() {
+        return strengthLevel;
+    }
+
     @Override
     public String toString() {
         return "RobotFeatures{"

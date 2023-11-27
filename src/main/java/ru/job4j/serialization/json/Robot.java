@@ -9,6 +9,26 @@ public class Robot {
     private RobotFeatures features;
     private String[] installedPrograms;
 
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public double getBatteryLevel() {
+        return batteryLevel;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public RobotFeatures getFeatures() {
+        return features;
+    }
+
+    public String[] getInstalledPrograms() {
+        return installedPrograms;
+    }
+
     public Robot(boolean isActive, double batteryLevel, String model, RobotFeatures features, String[] installedPrograms) {
         this.isActive = isActive;
         this.batteryLevel = batteryLevel;
