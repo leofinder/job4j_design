@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<robot isActive="true" batteryLevel="100.0">
+    <model>Destroyer X1</model>
+    <features material="Dark Steel" strengthLevel="20"/>
+    <installedPrograms>
+        <installedProgram>Hacking</installedProgram>
+        <installedProgram>Stealth Mode</installedProgram>
+        <installedProgram>Advanced Combat</installedProgram>
+    </installedPrograms>
+</robot>
